@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Meu Formulário</title>
+  <!-- Adicione os scripts do Firebase aqui -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    select,
+    input[type="text"],
+    input[type="checkbox"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="meuFormulario">
+    <h2>Nome do Cliente</h2>
+    <label for="nomeCliente">Digite o nome do cliente:</label>
+    <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome do cliente" required>
+
+    <!-- Novo campo de entrada para o nome do consultor -->
+    <h2>Nome do Consultor</h2>
+    <label for="nomeConsultor">Digite o nome do consultor:</label>
+    <input type="text" id="nomeConsultor" name="nomeConsultor" placeholder="Nome do consultor" required>
+
+    <h2>Header</h2>
+    <label for="header">Selecione uma opção para o cabeçalho:</label>
+    <select id="header" name="header">
+      <option value="Ruby">Ruby</option>
+      <option value="18k">18k</option>
+      <option value="RecParts">RecParts</option>
+      <option value="Marrocos">Marrocos</option>
+      <option value="Soulcare">Soulcare</option>
+      <option value="Virtude">Virtude</option>
+    </select>
+
+    <h2>Footer</h2>
+    <label for="footer">Selecione uma opção para o rodapé:</label>
+    <select id="footer" name="footer">
+      <option value="18k 1 card">18k 1 card</option>
+      <option value="18k 2 card">18k 2 card</option>
+      <option value="Fênix">Fênix</option>
+      <option value="Soulcare">Soulcare</option>
+    </select>
+
+    <h2>Body / Cards</h2>
+    <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
+    <select id="bodyCards" name="bodyCards">
+      <option value="Virtude">Virtude</option>
+      <option value="Brasil">Brasil</option>
+      <option value="MafImports">MafImports</option>
+      <option value="Soulcare">Soulcare</option>
+      <option value="Recparts">Recparts</option>
+    </select>
+
+    <h2>Página de Produtos</h2>
+    <label for="pagProd">Selecione uma opção para a página de produtos:</label>
+    <select id="pagProd" name="pagProd">
+      <option value="Virtude">Virtude</option>
+      <option value="Soulcare">Soulcare</option>
+      <option value="mafImports">mafImports</option>
+      <option value="Brasil">Brasil</option>
+      <option value="18k">18k</option>
+    </select>
+
+    <h2>Divisão de Categorias</h2>
+    <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
+    <select id="divisaoCat" name="divisaoCat">
+      <option value="Virtude">Virtude</option>
+      <option value="ASF euro">ASF euro</option>
+      <option value="18k">18k</option>
+      <option value="Brasil">Brasil</option>
+      <option value="Padrão (alteração de cor)">Padrão (alteração de cor)</option>
+    </select>
+
+    <h2>Recursos Extras</h2>
+    <p>Marque as caixas dos recursos extras:</p>
+    <input type="checkbox" id="carrosselDepoimentos" name="carrosselDepoimentos">
+    <label for="carrosselDepoimentos">Carrossel de depoimentos</label>
+    <br>
+    <input type="checkbox" id="carrosselMarcas" name="carrosselMarcas">
+    <label for="carrosselMarcas">Carrossel de marcas</label>
+    <br>
+    <input type="checkbox" id="gifFlash" name="gifFlash">
+    <label for="gifFlash">Gif no flash</label>
+    <br>
+    <input type="checkbox" id="ctaPag" name="ctaPag">
+    <label for="ctaPag">CTA abaixo da página</label>
+    <br>
+    <input type="checkbox" id="trocaIconeWpp" name="trocaIconeWpp">
+    <label for="trocaIconeWpp">Troca ícone do WhatsApp</label>
+    <br>
+    <input type="checkbox" id="filtragem" name="filtragem">
+    <label for="filtragem">Ferramenta de filtragem</label>
+    <br>
+
+    <!-- Novo campo de entrada para o nome do cliente -->
+
+    <input type="submit" value="Enviar" id="botaoEnviar">
+  </form>
+  <div class="popup" id="popupSucesso">
+    Dados salvos com sucesso!
+  </div>
+  <script>
+    // Configurar o Firebase com suas credenciais do projeto
+    var firebaseConfig = {
+      apiKey: "AIzaSyACaYPAwSRj8Yl4QZ-DXavyZsRMablJ1R4",
+      authDomain: "realtimechat-6e34d.firebaseapp.com",
+      databaseURL: "https://realtimechat-6e34d-default-rtdb.firebaseio.com",
+      projectId: "realtimechat-6e34d",
+      storageBucket: "realtimechat-6e34d.appspot.com",
+      messagingSenderId: "296544290773",
+      appId: "1:296544290773:web:e3fbd18022861ed6ce5f5c",
+      measurementId: "G-KLFMBYBBEL"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Referência ao nó do banco de dados onde salvaremos os dados
+    var database = firebase.database().ref("dados_formulario");
+
+    document.getElementById("botaoEnviar").addEventListener("click", function (event) {
+      event.preventDefault();
+
+      // Obter os valores do formulário (incluindo os novos campos)
+      var header = document.getElementById("header").value;
+      var footer = document.getElementById("footer").value;
+      var bodyCards = document.getElementById("bodyCards").value;
+      var pagProd = document.getElementById("pagProd").value;
+      var divisaoCat = document.getElementById("divisaoCat").value;
+      var nomeCliente = document.getElementById("nomeCliente").value;
+      var nomeConsultor = document.getElementById("nomeConsultor").value; // Novo campo
+      var carrosselDepoimentos = document.getElementById("carrosselDepoimentos").checked;
+      var carrosselMarcas = document.getElementById("carrosselMarcas").checked;
+      var gifFlash = document.getElementById("gifFlash").checked;
+      var ctaPag = document.getElementById("ctaPag").checked;
+      var trocaIconeWpp = document.getElementById("trocaIconeWpp").checked;
+      var filtragem = document.getElementById("filtragem").checked;
+
+      // Criar um objeto com os dados do formulário (incluindo os novos campos)
+      var formData = {
+        header: header,
+        footer: footer,
+        bodyCards: bodyCards,
+        pagProd: pagProd,
+        divisaoCat: divisaoCat,
+        nomeCliente: nomeCliente,
+        nomeConsultor: nomeConsultor, // Novo campo
+        recursosExtras: {
+          carrosselDepoimentos: carrosselDepoimentos,
+          carrosselMarcas: carrosselMarcas,
+          gifFlash: gifFlash,
+          ctaPag: ctaPag,
+          trocaIconeWpp: trocaIconeWpp,
+          filtragem: filtragem
+        }
+      };
+
+      // Enviar os dados para o Firebase Realtime Database
+      database.push(formData)
+        .then(function () {
+          console.log("Dados salvos com sucesso!");
+          // Redirecionar para uma página de sucesso ou fazer outras ações aqui
+        })
+        .catch(function (error) {
+          console.error("Erro ao salvar os dados:", error);
+        });
+
+      var popupSucesso = document.getElementById("popupSucesso");
+      popupSucesso.style.display = "block";
+
+      // Esconder o popup após 3 segundos
+      setTimeout(function () {
+        popupSucesso.style.display = "none";
+      }, 3000);
+    });
+  </script>
+</body>
+
+</html>
