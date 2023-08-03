@@ -41,6 +41,10 @@
       font-size: 16px;
     }
 
+    input[type="checkbox"] {
+      width: 50%;
+    }
+
     input[type="submit"] {
       background-color: #4CAF50;
       color: #fff;
@@ -67,6 +71,25 @@
       border-radius: 4px;
       display: none;
     }
+
+    img#header-img,
+    img#footer-img,
+    img#body-cards-img,
+    img#pag-prod-img,
+    img#divisao-cat-img {
+      width: 580px;
+    }
+
+    .align-checks {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .align-checks label {
+      width: 50%;
+    }
   </style>
 </head>
 
@@ -83,6 +106,7 @@
 
     <h2>Header</h2>
     <label for="header">Selecione uma opção para o cabeçalho:</label>
+    <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
     <select id="header" name="header">
       <option value="Ruby">Ruby</option>
       <option value="18k">18k</option>
@@ -94,6 +118,7 @@
 
     <h2>Footer</h2>
     <label for="footer">Selecione uma opção para o rodapé:</label>
+    <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
     <select id="footer" name="footer">
       <option value="18k 1 card">18k 1 card</option>
       <option value="18k 2 card">18k 2 card</option>
@@ -103,6 +128,7 @@
 
     <h2>Body / Cards</h2>
     <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
+    <img id="body-cards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
     <select id="bodyCards" name="bodyCards">
       <option value="Virtude">Virtude</option>
       <option value="Brasil">Brasil</option>
@@ -113,6 +139,7 @@
 
     <h2>Página de Produtos</h2>
     <label for="pagProd">Selecione uma opção para a página de produtos:</label>
+    <img id="pag-prod-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
     <select id="pagProd" name="pagProd">
       <option value="Virtude">Virtude</option>
       <option value="Soulcare">Soulcare</option>
@@ -123,6 +150,7 @@
 
     <h2>Divisão de Categorias</h2>
     <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
+    <img id="divisao-cat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
     <select id="divisaoCat" name="divisaoCat">
       <option value="Virtude">Virtude</option>
       <option value="ASF euro">ASF euro</option>
@@ -133,23 +161,38 @@
 
     <h2>Recursos Extras</h2>
     <p>Marque as caixas dos recursos extras:</p>
-    <input type="checkbox" id="carrosselDepoimentos" name="carrosselDepoimentos">
-    <label for="carrosselDepoimentos">Carrossel de depoimentos</label>
+    <div class="align-checks">
+      <input type="checkbox" id="carrosselDepoimentos" name="carrosselDepoimentos">
+      <label for="carrosselDepoimentos">Carrossel de depoimentos</label>
+    </div>
     <br>
-    <input type="checkbox" id="carrosselMarcas" name="carrosselMarcas">
-    <label for="carrosselMarcas">Carrossel de marcas</label>
+    <div class="align-checks">
+      <input type="checkbox" id="carrosselMarcas" name="carrosselMarcas">
+      <label for="carrosselMarcas">Carrossel de marcas</label>
+    </div>
     <br>
-    <input type="checkbox" id="gifFlash" name="gifFlash">
-    <label for="gifFlash">Gif no flash</label>
+    <div class="align-checks">
+      <input type="checkbox" id="gifFlash" name="gifFlash">
+      <label for="gifFlash">Gif no flash</label>
+    </div>
     <br>
-    <input type="checkbox" id="ctaPag" name="ctaPag">
-    <label for="ctaPag">CTA abaixo da página</label>
+    <div class="align-checks">
+      <input type="checkbox" id="ctaPag" name="ctaPag">
+      <label for="ctaPag">CTA abaixo da página</label>
+
+    </div>
     <br>
-    <input type="checkbox" id="trocaIconeWpp" name="trocaIconeWpp">
-    <label for="trocaIconeWpp">Troca ícone do WhatsApp</label>
+    <div class="align-checks">
+      <input type="checkbox" id="trocaIconeWpp" name="trocaIconeWpp">
+      <label for="trocaIconeWpp">Troca ícone do WhatsApp</label>
+
+    </div>
     <br>
-    <input type="checkbox" id="filtragem" name="filtragem">
-    <label for="filtragem">Ferramenta de filtragem</label>
+    <div class="align-checks">
+      <input type="checkbox" id="filtragem" name="filtragem">
+      <label for="filtragem">Ferramenta de filtragem</label>
+
+    </div>
     <br>
 
     <!-- Novo campo de entrada para o nome do cliente -->
@@ -230,6 +273,48 @@
       setTimeout(function () {
         popupSucesso.style.display = "none";
       }, 3000);
+    });
+    // Referências aos elementos de imagem
+    const headerImg = document.getElementById('header-img');
+    const footerImg = document.getElementById('footer-img');
+    const bodyCardsImg = document.getElementById('body-cards-img');
+    const pagProdImg = document.getElementById('pag-prod-img');
+    const divisaoCatImg = document.getElementById('divisao-cat-img');
+
+    // Função para atualizar a imagem de acordo com a opção selecionada
+    function updateImage(element, option) {
+      const imageSrc = `./img/HeaderImg/${option}.png`;
+      element.src = imageSrc;
+    }
+
+    // Evento ao mudar a opção no select Header
+    document.getElementById('header').addEventListener('change', function () {
+      const selectedOption = this.value;
+      updateImage(headerImg, selectedOption);
+    });
+
+    // Evento ao mudar a opção no select Footer
+    document.getElementById('footer').addEventListener('change', function () {
+      const selectedOption = this.value;
+      updateImage(footerImg, selectedOption);
+    });
+
+    // Evento ao mudar a opção no select Body / Cards
+    document.getElementById('bodyCards').addEventListener('change', function () {
+      const selectedOption = this.value;
+      updateImage(bodyCardsImg, selectedOption);
+    });
+
+    // Evento ao mudar a opção no select Página de Produtos
+    document.getElementById('pagProd').addEventListener('change', function () {
+      const selectedOption = this.value;
+      updateImage(pagProdImg, selectedOption);
+    });
+
+    // Evento ao mudar a opção no select Divisão de Categorias
+    document.getElementById('divisaoCat').addEventListener('change', function () {
+      const selectedOption = this.value;
+      updateImage(divisaoCatImg, selectedOption);
     });
   </script>
 </body>
