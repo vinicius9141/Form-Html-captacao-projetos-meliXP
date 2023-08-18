@@ -94,116 +94,109 @@
 </head>
 
 <body>
-  <form id="meuFormulario">
-    <h2>Nome do Cliente</h2>
-    <label for="nomeCliente">Digite o nome do cliente:</label>
-    <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome do cliente" required>
+  <!DOCTYPE html>
+  <html>
 
-    <!-- Novo campo de entrada para o nome do consultor -->
-    <h2>Nome do Consultor</h2>
-    <label for="nomeConsultor">Digite o nome do consultor:</label>
-    <input type="text" id="nomeConsultor" name="nomeConsultor" placeholder="Nome do consultor" required>
+  <head>
+    <title>Meu Formulário</title>
 
-    <h2>Header</h2>
-    <label for="header">Selecione uma opção para o cabeçalho:</label>
-    <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-    <select id="header" name="header">
-      <option value="Ruby">Ruby</option>
-      <option value="18k">18k</option>
-      <option value="RecParts">RecParts</option>
-      <option value="Marrocos">Marrocos</option>
-      <option value="Soulcare">Soulcare</option>
-      <option value="Virtude">Virtude</option>
-    </select>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+  </head>
 
-    <h2>Footer</h2>
-    <label for="footer">Selecione uma opção para o rodapé:</label>
-    <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-    <select id="footer" name="footer">
-      <option value="18k 1 card">18k 1 card</option>
-      <option value="18k 2 card">18k 2 card</option>
-      <option value="Fênix">Fênix</option>
-      <option value="Soulcare">Soulcare</option>
-    </select>
+  <body>
+    <form id="meuFormulario">
+      <h2>Nome do Cliente</h2>
+      <label for="nomeCliente">Digite o nome do cliente:</label>
+      <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome do cliente" required>
 
-    <h2>Body / Cards</h2>
-    <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
-    <img id="body-cards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-    <select id="bodyCards" name="bodyCards">
-      <option value="Virtude">Virtude</option>
-      <option value="Brasil">Brasil</option>
-      <option value="MafImports">MafImports</option>
-      <option value="Soulcare">Soulcare</option>
-      <option value="Recparts">Recparts</option>
-    </select>
+      <!-- Novo campo de entrada para o nome do consultor -->
+      <h2>Nome do Consultor</h2>
+      <label for="nomeConsultor">Digite o nome do consultor:</label>
+      <input type="text" id="nomeConsultor" name="nomeConsultor" placeholder="Nome do consultor" required>
 
-    <h2>Página de Produtos</h2>
-    <label for="pagProd">Selecione uma opção para a página de produtos:</label>
-    <img id="pag-prod-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-    <select id="pagProd" name="pagProd">
-      <option value="Virtude">Virtude</option>
-      <option value="Soulcare">Soulcare</option>
-      <option value="mafImports">mafImports</option>
-      <option value="Brasil">Brasil</option>
-      <option value="18k">18k</option>
-    </select>
+      <h2>Header</h2>
+      <label for="header">Selecione uma opção para o cabeçalho:</label>
+      <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+      <div id="headerOptions">
+        <button class="optionButton" value="Ruby" data-group-id="header" data-folder-name="HeaderImg">Ruby</button>
+        <button class="optionButton" value="18k" data-group-id="header" data-folder-name="HeaderImg">18k</button>
+        <button class="optionButton" value="RecParts" data-group-id="header"
+          data-folder-name="HeaderImg">RecParts</button>
+        <button class="optionButton" value="Marrocos" data-group-id="header"
+          data-folder-name="HeaderImg">Marrocos</button>
+        <button class="optionButton" value="Soulcare" data-group-id="header"
+          data-folder-name="HeaderImg">Soulcare</button>
+        <button class="optionButton" value="Virtude" data-group-id="header"
+          data-folder-name="HeaderImg">Virtude</button>
+      </div>
 
-    <h2>Divisão de Categorias</h2>
-    <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
-    <img id="divisao-cat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-    <select id="divisaoCat" name="divisaoCat">
-      <option value="Virtude">Virtude</option>
-      <option value="ASF euro">ASF euro</option>
-      <option value="18k">18k</option>
-      <option value="Brasil">Brasil</option>
-      <option value="Padrão (alteração de cor)">Padrão (alteração de cor)</option>
-    </select>
+      <h2>Footer</h2>
+      <label for="footer">Selecione uma opção para o rodapé:</label>
+      <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+      <div id="footerOptions">
+        <button class="optionButton" value="marcos" data-group-id="footer" data-folder-name="FooterImg">Marcos
+          Cabeçote</button>
+        <button class="optionButton" value="18k 2 card" data-folder-name="FooterImg">18k 2 card</button>
+        <button class="optionButton" value="Fênix" data-folder-name="FooterImg">Fênix</button>
+        <button class="optionButton" value="Soulcare" data-folder-name="FooterImg">Soulcare</button>
+      </div>
 
-    <h2>Recursos Extras</h2>
-    <p>Marque as caixas dos recursos extras:</p>
-    <div class="align-checks">
-      <input type="checkbox" id="carrosselDepoimentos" name="carrosselDepoimentos">
-      <label for="carrosselDepoimentos">Carrossel de depoimentos</label>
-    </div>
-    <br>
-    <div class="align-checks">
-      <input type="checkbox" id="carrosselMarcas" name="carrosselMarcas">
-      <label for="carrosselMarcas">Carrossel de marcas</label>
-    </div>
-    <br>
-    <div class="align-checks">
-      <input type="checkbox" id="gifFlash" name="gifFlash">
-      <label for="gifFlash">Gif no flash</label>
-    </div>
-    <br>
-    <div class="align-checks">
-      <input type="checkbox" id="ctaPag" name="ctaPag">
-      <label for="ctaPag">CTA abaixo da página</label>
+      <h2>Body / Cards</h2>
+      <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
+      <img id="bodyCards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+      <div id="bodyCardsOptions">
+        <button class="optionButton" value="18k" data-group-id="bodyCards"
+          data-folder-name="BodyCardsImg">Virtude</button>
+        <button class="optionButton" value="Brasil" data-group-id="bodyCards"
+          data-folder-name="BodyCardsImg">Brasil</button>
+        <button class="optionButton" value="MafImports" data-group-id="bodyCards"
+          data-folder-name="BodyCardsImg">MafImports</button>
+        <button class="optionButton" value="Soulcare" data-group-id="bodyCards"
+          data-folder-name="BodyCardsImg">Soulcare</button>
+        <button class="optionButton" value="Recparts" data-group-id="bodyCards"
+          data-folder-name="BodyCardsImg">Recparts</button>
+      </div>
 
-    </div>
-    <br>
-    <div class="align-checks">
-      <input type="checkbox" id="trocaIconeWpp" name="trocaIconeWpp">
-      <label for="trocaIconeWpp">Troca ícone do WhatsApp</label>
+      <h2>Página de Produtos</h2>
+      <label for="pagProd">Selecione uma opção para a página de produtos:</label>
+      <img id="pagProd-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+      <div id="pagProdOptions">
+        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="18k">Virtude</button>
+        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd"
+          value="Soulcare">Soulcare</button>
+        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd"
+          value="mafImports">mafImports</button>
+        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="Brasil">Brasil</button>
+        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="18k">18k</button>
+      </div>
 
-    </div>
-    <br>
-    <div class="align-checks">
-      <input type="checkbox" id="filtragem" name="filtragem">
-      <label for="filtragem">Ferramenta de filtragem</label>
+      <h2>Divisão de Categorias</h2>
+      <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
+      <img id="divisaoCat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+      <div id="divisaoCatOptions">
+        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+          value="18k">Virtude</button>
+        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat" value="ASFeuro">ASF
+          euro</button>
+        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat" value="18k">18k</button>
+        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+          value="Brasil">Brasil</button>
+        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+          value="Padrão (alteração de cor)">Padrão (alteração de
+          cor)</button>
+      </div>
+      </div>
+      <button id="botaoEnviar">Enviar</button>
+    </form>
+  </body>
 
-    </div>
-    <br>
-
-    <!-- Novo campo de entrada para o nome do cliente -->
-
-    <input type="submit" value="Enviar" id="botaoEnviar">
-  </form>
+  </html>
   <div class="popup" id="popupSucesso">
     Dados salvos com sucesso!
   </div>
   <script>
-    // Configurar o Firebase com suas credenciais do projeto
+
     var firebaseConfig = {
       apiKey: "AIzaSyACaYPAwSRj8Yl4QZ-DXavyZsRMablJ1R4",
       authDomain: "realtimechat-6e34d.firebaseapp.com",
@@ -215,108 +208,97 @@
       measurementId: "G-KLFMBYBBEL"
     };
     firebase.initializeApp(firebaseConfig);
-
-    // Referência ao nó do banco de dados onde salvaremos os dados
     var database = firebase.database().ref("dados_formulario");
 
-    document.getElementById("botaoEnviar").addEventListener("click", function (event) {
-      event.preventDefault();
+    const botaoEnviar = document.getElementById('botaoEnviar');
 
-      // Obter os valores do formulário (incluindo os novos campos)
-      var header = document.getElementById("header").value;
-      var footer = document.getElementById("footer").value;
-      var bodyCards = document.getElementById("bodyCards").value;
-      var pagProd = document.getElementById("pagProd").value;
-      var divisaoCat = document.getElementById("divisaoCat").value;
-      var nomeCliente = document.getElementById("nomeCliente").value;
-      var nomeConsultor = document.getElementById("nomeConsultor").value; // Novo campo
-      var carrosselDepoimentos = document.getElementById("carrosselDepoimentos").checked;
-      var carrosselMarcas = document.getElementById("carrosselMarcas").checked;
-      var gifFlash = document.getElementById("gifFlash").checked;
-      var ctaPag = document.getElementById("ctaPag").checked;
-      var trocaIconeWpp = document.getElementById("trocaIconeWpp").checked;
-      var filtragem = document.getElementById("filtragem").checked;
+    if (botaoEnviar) {
+      botaoEnviar.addEventListener("click", function (event) {
+        event.preventDefault();
 
-      // Criar um objeto com os dados do formulário (incluindo os novos campos)
-      var formData = {
-        header: header,
-        footer: footer,
-        bodyCards: bodyCards,
-        pagProd: pagProd,
-        divisaoCat: divisaoCat,
-        nomeCliente: nomeCliente,
-        nomeConsultor: nomeConsultor, // Novo campo
-        recursosExtras: {
-          carrosselDepoimentos: carrosselDepoimentos,
-          carrosselMarcas: carrosselMarcas,
-          gifFlash: gifFlash,
-          ctaPag: ctaPag,
-          trocaIconeWpp: trocaIconeWpp,
-          filtragem: filtragem
+        var nomeCliente = document.getElementById("nomeCliente").value;
+        var nomeConsultor = document.getElementById("nomeConsultor").value;
+        var header = document.querySelector("#headerOptions button.selected").textContent;
+        var footer = document.querySelector("#footerOptions button.selected").textContent;
+        var bodyCards = document.querySelector("#bodyCardsOptions button.selected").textContent;
+        var pagProd = document.querySelector("#pagProdOptions button.selected").textContent;
+        var divisaoCat = document.querySelector("#divisaoCatOptions button.selected").textContent;
+
+        var formData = {
+          nomeCliente: nomeCliente,
+          nomeConsultor: nomeConsultor,
+          header: header,
+          footer: footer,
+          bodyCards: bodyCards,
+          pagProd: pagProd,
+          divisaoCat: divisaoCat
+        };
+
+        database.push(formData)
+          .then(function () {
+            console.log("Dados salvos com sucesso!");
+          })
+          .catch(function (error) {
+            console.error("Erro ao salvar os dados:", error);
+          });
+
+        var popupSucesso = document.getElementById("popupSucesso");
+        popupSucesso.style.display = "block";
+
+        setTimeout(function () {
+          popupSucesso.style.display = "none";
+        }, 3000);
+      });
+    } else {
+      console.error("Elemento botaoEnviar não encontrado.");
+    }
+
+    document.querySelectorAll('.optionButton').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        const selectedOption = this.value;
+        const groupId = this.getAttribute('data-group-id');
+        const folderName = this.getAttribute('data-folder-name');
+        const imageElement = document.getElementById(`${groupId}-img`);
+        if (imageElement) {
+          updateImage(imageElement, selectedOption, folderName);
+        } else {
+          console.error("Elemento de imagem não encontrado para o grupo:", groupId);
         }
-      };
 
-      // Enviar os dados para o Firebase Realtime Database
-      database.push(formData)
-        .then(function () {
-          console.log("Dados salvos com sucesso!");
-          // Redirecionar para uma página de sucesso ou fazer outras ações aqui
-        })
-        .catch(function (error) {
-          console.error("Erro ao salvar os dados:", error);
+        document.querySelectorAll(`#${groupId}Options button`).forEach(function (btn) {
+          btn.classList.remove('selected');
         });
-
-      var popupSucesso = document.getElementById("popupSucesso");
-      popupSucesso.style.display = "block";
-
-      // Esconder o popup após 3 segundos
-      setTimeout(function () {
-        popupSucesso.style.display = "none";
-      }, 3000);
+        this.classList.add('selected');
+      });
     });
-    // Referências aos elementos de imagem
-    const headerImg = document.getElementById('header-img');
-    const footerImg = document.getElementById('footer-img');
-    const bodyCardsImg = document.getElementById('body-cards-img');
-    const pagProdImg = document.getElementById('pag-prod-img');
-    const divisaoCatImg = document.getElementById('divisao-cat-img');
 
-    // Função para atualizar a imagem de acordo com a opção selecionada
-    function updateImage(element, option) {
-      const imageSrc = `./img/HeaderImg/${option}.png`;
+    function updateImage(element, option, folderName) {
+      const imageSrc = `./img/${folderName}/${option}.png`;
       element.src = imageSrc;
     }
 
-    // Evento ao mudar a opção no select Header
-    document.getElementById('header').addEventListener('change', function () {
-      const selectedOption = this.value;
-      updateImage(headerImg, selectedOption);
-    });
+    document.querySelectorAll('.optionButton').forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        const selectedOption = this.value;
+        const groupId = this.getAttribute('data-group-id');
+        const folderName = this.getAttribute('data-folder-name');
+        const imageElement = document.getElementById(`${groupId}-img`);
+        if (imageElement) {
+          updateImage(imageElement, selectedOption, folderName);
+        } else {
+          console.error("Elemento de imagem não encontrado para o grupo:", groupId);
+        }
 
-    // Evento ao mudar a opção no select Footer
-    document.getElementById('footer').addEventListener('change', function () {
-      const selectedOption = this.value;
-      updateImage(footerImg, selectedOption);
-    });
-
-    // Evento ao mudar a opção no select Body / Cards
-    document.getElementById('bodyCards').addEventListener('change', function () {
-      const selectedOption = this.value;
-      updateImage(bodyCardsImg, selectedOption);
-    });
-
-    // Evento ao mudar a opção no select Página de Produtos
-    document.getElementById('pagProd').addEventListener('change', function () {
-      const selectedOption = this.value;
-      updateImage(pagProdImg, selectedOption);
-    });
-
-    // Evento ao mudar a opção no select Divisão de Categorias
-    document.getElementById('divisaoCat').addEventListener('change', function () {
-      const selectedOption = this.value;
-      updateImage(divisaoCatImg, selectedOption);
+        document.querySelectorAll(`#${groupId}Options button`).forEach(function (btn) {
+          btn.classList.remove('selected');
+        });
+        this.classList.add('selected');
+      });
     });
   </script>
+
 </body>
 
 </html>
