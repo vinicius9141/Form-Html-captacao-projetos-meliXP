@@ -2,43 +2,310 @@
 <html>
 
 <head>
-  <title>Meu Formulário</title>
+  <title>GHG Html Custom Form</title>
   <!-- Adicione os scripts do Firebase aqui -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 20px;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      font-family: 'Inter', sans-serif;
+      vertical-align: baseline;
     }
 
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    * {
+      box-sizing: border-box;
+    }
+
+    /* HTML5 display-role reset for older browsers */
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+
+    body {
+      line-height: 1;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    blockquote,
+    q {
+      quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /*--------------------------------------------------*/
+
+    .flex-r {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .flex-c {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .gap-10 {
+      gap: 10px;
+    }
+
+    .gap-20 {
+      gap: 20px;
+    }
+
+    .gap-60 {
+      gap: 60px;
+    }
+
+    #meuFormulario {
+      border-radius: 16px;
+      background: #FFF;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      /* max-width: 720px; */
+      max-width: 900px;
+      width: 100%;
+      margin: 300px auto;
+    }
+
+    body {
+      background: linear-gradient(180deg, #09237b, #1a6a80);
+      background: #0b2b78;
+      color: #000;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    body::after {
+      content: "";
+      background-color: #3D55A6;
+      background-image: linear-gradient(180deg, rgb(234 103 100 / 0%), #0a2a7b), url(https://cdn.greatpages.com.br/www.growthackgroup.com/1679129961/imagens/desktop/554273.jpg);
+      background-size: cover;
+      position: absolute;
+      z-index: -1;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 500px;
+      top: 0;
+      
+    filter: blur(4px);
+    }
+
+    body::before {
+      content: "Formulário de Criação de Custom HTML";
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+      max-width: 780px;
+      left: 50%;
+      transform: translate(-50%);
+      top: 100px;
+      color: #FFF;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-family: Inter;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+
+    .cliente-dados,
+    .consultor,
+    .opcao {
+      padding: 40px;
+    }
+
+
+    .cliente-dados {
+      background: #2c6bff;
+    }
+
+    .botoes-wrapper,
+    .dado {
+      width: 100%;
+    }
+
+    .opcao img {
+      width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid #ebebeb;
+      /* box-shadow: 0px 4px 4px 0px rgb(60 68 92 / 24%);*/
+    }
+
+    .optionButton {
+      width: 100%;
+      height: 80px;
+      justify-content: center;
+      color: #000000;
+      text-align: center;
+      border: 2px solid #ebebeb !important;
+      background: transparent;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: normal;
+      border-radius: 12px;
+    }
+
+    .selected {
+      color: #fff;
+      background: #2c6bff;
+      border-color: #2c6bff !important;
     }
 
     h2 {
-      margin-top: 15px;
+      color: #2c6bff;
+      font-family: Inter;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: normal;
+      white-space: nowrap;
     }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
+    .cliente-dados h2{
+      color: #fff;
+    }
+
+    .cliente-dados label{
+      color: #fff;
+    }
+
+    span {
+      color: #00ff68;
     }
 
     select,
     input[type="text"],
     input[type="checkbox"] {
       width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 8px 20px;
+      height: 50px;
       font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #c1c4d0;
+      background: #FFF;
     }
 
     input[type="checkbox"] {
@@ -60,25 +327,38 @@
       background-color: #45a049;
     }
 
+    :focus-visible {
+      outline-color: #3D55A6;
+    }
+
     .popup {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       padding: 10px 20px;
-      background-color: #4CAF50;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 36px;
+      text-shadow: 0 0 20px black;
+      height: 100%;
+      background-color: #23d96de3;
       color: #fff;
       border-radius: 4px;
-      display: none;
+      transition: .5s ease-in-out;
+      opacity: 0;
+      pointer-events: none !important;
     }
 
-    img#header-img,
+    /* img#header-img,
     img#footer-img,
     img#body-cards-img,
     img#pag-prod-img,
     img#divisao-cat-img {
       width: 580px;
-    }
+    } */
 
     .align-checks {
       display: flex;
@@ -90,6 +370,24 @@
     .align-checks label {
       width: 50%;
     }
+
+    .nomeConsultor {
+      display: none;
+    }
+
+    button#botaoEnviar {
+      background: #00ff68;
+      border: none;
+      /* border-bottom: 5px solid #2b851f; */
+      color: #000000;
+      font-weight: 800 !important;
+      font-size: 24px;
+      width: 100%;
+      height: 100px;
+      border-radius: 8px;
+      margin: 0 0 0 auto;
+      /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);*/
+    }
   </style>
 </head>
 
@@ -98,96 +396,154 @@
   <html>
 
   <head>
-    <title>Meu Formulário</title>
-
+    <title>GHG Html Custom Form</title>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
   </head>
 
   <body>
     <form id="meuFormulario">
-      <h2>Nome do Cliente</h2>
-      <label for="nomeCliente">Digite o nome do cliente:</label>
-      <input type="text" id="nomeCliente" name="nomeCliente" placeholder="Nome do cliente" required>
-
       <!-- Novo campo de entrada para o nome do consultor -->
-      <h2>Nome do Consultor</h2>
-      <label for="nomeConsultor">Digite o nome do consultor:</label>
-      <input type="text" id="nomeConsultor" name="nomeConsultor" placeholder="Nome do consultor" required>
+      <div class="consultor flex-r gap-20">
+        <h2>Consultor:</h2>
+        <label class="nomeConsultor" for="nomeConsultor">Digite o nome do consultor:</label>
 
-      <h2>Header</h2>
-      <label for="header">Selecione uma opção para o cabeçalho:</label>
-      <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-      <div id="headerOptions">
-        <button class="optionButton" value="Ruby" data-group-id="header" data-folder-name="HeaderImg">Ruby</button>
-        <button class="optionButton" value="18k" data-group-id="header" data-folder-name="HeaderImg">18k</button>
-        <button class="optionButton" value="RecParts" data-group-id="header"
-          data-folder-name="HeaderImg">RecParts</button>
-        <button class="optionButton" value="Marrocos" data-group-id="header"
-          data-folder-name="HeaderImg">Marrocos</button>
-        <button class="optionButton" value="Soulcare" data-group-id="header"
-          data-folder-name="HeaderImg">Soulcare</button>
-        <button class="optionButton" value="Virtude" data-group-id="header"
-          data-folder-name="HeaderImg">Virtude</button>
-      </div>
-
-      <h2>Footer</h2>
-      <label for="footer">Selecione uma opção para o rodapé:</label>
-      <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-      <div id="footerOptions">
-        <button class="optionButton" value="marcos" data-group-id="footer" data-folder-name="FooterImg">Marcos
-          Cabeçote</button>
-        <button class="optionButton" value="18k 2 card" data-folder-name="FooterImg">18k 2 card</button>
-        <button class="optionButton" value="Fênix" data-folder-name="FooterImg">Fênix</button>
-        <button class="optionButton" value="Soulcare" data-folder-name="FooterImg">Soulcare</button>
+        <select name="" id="nomeConsultor" placeholder="Consultor" required>
+          <option value="Renzo-Pagio">Renzo Pagio</option>
+          <option value="Daiane">Daiane</option>
+          <option value="Vinicius">Vinicius</option>
+          <option value="Carlos-Menezes">Carlos Menezes</option>
+          <option value="Gustavo-Secim">Gustavo Secim</option>
+          <option value="Luan-Vianna">Luan Vianna</option>
+          <option value="Phylipe-Schad">Phylipe Schad</option>
+          <option value="Flavio">Flávio</option>
+          <option value="Rafael-Botti">Rafael Botti</option>
+          <option value="Raiane-Couto">Raiane-Couto</option>
+          <option value="Ailson">Ailson</option>
+          <option value="Cassiano-Malvezzi">Cassiano Malvezzi</option>
+          <option value="Marcel-Messias">Marcel Messias</option>
+        </select>
       </div>
 
-      <h2>Body / Cards</h2>
-      <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
-      <img id="bodyCards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-      <div id="bodyCardsOptions">
-        <button class="optionButton" value="18k" data-group-id="bodyCards"
-          data-folder-name="BodyCardsImg">Virtude</button>
-        <button class="optionButton" value="Brasil" data-group-id="bodyCards"
-          data-folder-name="BodyCardsImg">Brasil</button>
-        <button class="optionButton" value="MafImports" data-group-id="bodyCards"
-          data-folder-name="BodyCardsImg">MafImports</button>
-        <button class="optionButton" value="Soulcare" data-group-id="bodyCards"
-          data-folder-name="BodyCardsImg">Soulcare</button>
-        <button class="optionButton" value="Recparts" data-group-id="bodyCards"
-          data-folder-name="BodyCardsImg">Recparts</button>
+      <div class="cliente-dados flex-c gap-60">
+        <!-- <p>Preencha os dados abaixo para que possa dar prosseguimento ao formulário.</p> -->
+        <div class="dado flex-c gap-10">
+          <h2>Nome da Empresa</h2>
+          <label for="nomeEmpresa">Digite o nome da empresa:</label>
+          <input type="text" id="nomeEmpresa" name="nomeEmpresa" placeholder="Nome da Empresa" required>
+        </div>
+
+        <div class="dado flex-c gap-10">
+          <h2>Nome do <span>Representante</span> da Empresa</h2>
+          <label for="nomeRepresentante">Digite seu nome:</label>
+          <input type="text" id="nomeRepresentante" name="nomeRepresentante" placeholder="Nome do Representante"
+            required>
+        </div>
+
+        <div class="dado flex-c gap-10">
+          <h2>Email para Contato</h2>
+          <label for="email">Digite o email:</label>
+          <input type="text" id="email" name="email" placeholder="Email" required>
+        </div>
+
+        <div class="dado flex-c gap-10">
+          <h2>Whatsapp</h2>
+          <label for="whatsapp">Digite o número:</label>
+          <input type="text" id="whatsapp" name="whatsapp" placeholder="Whatsapp" required>
+        </div>
+      </div>
+      <!-- <div class="opcao">
+        <h2>Personalização de Sites</h2>
+      </div> -->
+      <div class="opcao flex-c gap-10">
+
+        <h2>Header</h2>
+        <label for="header">Selecione uma opção para o cabeçalho:</label>
+        <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <div class="botoes-wrapper flex-r gap-10 gap-10" id="headerOptions">
+          <button class="optionButton flex-r" value="Ruby" data-group-id="header"
+            data-folder-name="HeaderImg">1</button>
+          <button class="optionButton flex-r" value="18k" data-group-id="header" data-folder-name="HeaderImg">2</button>
+          <button class="optionButton flex-r" value="RecParts" data-group-id="header"
+            data-folder-name="HeaderImg">3</button>
+          <button class="optionButton flex-r" value="Marrocos" data-group-id="header"
+            data-folder-name="HeaderImg">4</button>
+          <button class="optionButton flex-r" value="Soulcare" data-group-id="header"
+            data-folder-name="HeaderImg">5</button>
+          <button class="optionButton flex-r" value="Virtude" data-group-id="header"
+            data-folder-name="HeaderImg">6</button>
+        </div>
       </div>
 
-      <h2>Página de Produtos</h2>
-      <label for="pagProd">Selecione uma opção para a página de produtos:</label>
-      <img id="pagProd-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-      <div id="pagProdOptions">
-        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="18k">Virtude</button>
-        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd"
-          value="Soulcare">Soulcare</button>
-        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd"
-          value="mafImports">mafImports</button>
-        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="Brasil">Brasil</button>
-        <button class="optionButton" data-group-id="pagProd" data-folder-name="pagProd" value="18k">18k</button>
+      <div class="opcao flex-c gap-10">
+        <h2>Footer</h2>
+        <label for="footer">Selecione uma opção para o rodapé:</label>
+        <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <div class="botoes-wrapper flex-r gap-10" id="footerOptions">
+          <button class="optionButton flex-r" value="marcos" data-group-id="footer"
+            data-folder-name="FooterImg">1</button>
+          <button class="optionButton flex-r" value="18k 2 card" data-folder-name="FooterImg">2</button>
+          <button class="optionButton flex-r" value="Fênix" data-folder-name="FooterImg">3</button>
+          <button class="optionButton flex-r" value="Soulcare" data-folder-name="FooterImg">4</button>
+        </div>
       </div>
 
-      <h2>Divisão de Categorias</h2>
-      <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
-      <img id="divisaoCat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
-      <div id="divisaoCatOptions">
-        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
-          value="18k">Virtude</button>
-        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat" value="ASFeuro">ASF
-          euro</button>
-        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat" value="18k">18k</button>
-        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
-          value="Brasil">Brasil</button>
-        <button class="optionButton" data-group-id="divisaoCat" data-folder-name="divisaoCat"
-          value="Padrão (alteração de cor)">Padrão (alteração de
-          cor)</button>
+      <div class="opcao flex-c gap-10">
+        <h2>Body / Cards</h2>
+        <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
+        <img id="bodyCards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <div class="botoes-wrapper flex-r gap-10" id="bodyCardsOptions">
+          <button class="optionButton flex-r" value="18k" data-group-id="bodyCards"
+            data-folder-name="BodyCardsImg">1</button>
+          <button class="optionButton flex-r" value="Brasil" data-group-id="bodyCards"
+            data-folder-name="BodyCardsImg">2</button>
+          <button class="optionButton flex-r" value="MafImports" data-group-id="bodyCards"
+            data-folder-name="BodyCardsImg">3</button>
+          <button class="optionButton flex-r" value="Soulcare" data-group-id="bodyCards"
+            data-folder-name="BodyCardsImg">4</button>
+          <button class="optionButton flex-r" value="Recparts" data-group-id="bodyCards"
+            data-folder-name="BodyCardsImg">5</button>
+        </div>
       </div>
+
+      <div class="opcao flex-c gap-10">
+        <h2>Página de Produtos</h2>
+        <label for="pagProd">Selecione uma opção para a página de produtos:</label>
+        <img id="pagProd-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <div class="botoes-wrapper flex-r gap-10" id="pagProdOptions">
+          <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd" value="18k">1</button>
+          <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd"
+            value="Soulcare">2</button>
+          <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd"
+            value="mafImports">3</button>
+          <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd"
+            value="Brasil">4</button>
+          <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd" value="18k">5</button>
+        </div>
       </div>
-      <button id="botaoEnviar">Enviar</button>
+
+      <div class="opcao flex-c gap-10">
+        <h2>Divisão de Categorias</h2>
+        <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
+        <img id="divisaoCat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <div class="botoes-wrapper flex-r gap-10" id="divisaoCatOptions">
+          <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+            value="18k">1</button>
+          <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+            value="ASFeuro">2</button>
+          <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+            value="18k">3</button>
+          <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+            value="Brasil">4</button>
+          <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
+            value="Padrão (alteração de cor)">5</button>
+        </div>
+      </div>
+
+      </div>
+      <div class="opcao flex-c gap-10">
+        <button id="botaoEnviar">Enviar Formulário</button>
+      </div>
     </form>
   </body>
 
@@ -207,6 +563,7 @@
       appId: "1:296544290773:web:e3fbd18022861ed6ce5f5c",
       measurementId: "G-KLFMBYBBEL"
     };
+
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database().ref("dados_formulario");
 
@@ -216,17 +573,24 @@
       botaoEnviar.addEventListener("click", function (event) {
         event.preventDefault();
 
-        var nomeCliente = document.getElementById("nomeCliente").value;
+        var nomeEmpresa = document.getElementById("nomeEmpresa").value;
+        var nomeRepresentante = document.getElementById("nomeRepresentante").value;
         var nomeConsultor = document.getElementById("nomeConsultor").value;
-        var header = document.querySelector("#headerOptions button.selected").textContent;
-        var footer = document.querySelector("#footerOptions button.selected").textContent;
-        var bodyCards = document.querySelector("#bodyCardsOptions button.selected").textContent;
-        var pagProd = document.querySelector("#pagProdOptions button.selected").textContent;
-        var divisaoCat = document.querySelector("#divisaoCatOptions button.selected").textContent;
+        var email = document.getElementById("email").value;
+        var whatsapp = document.getElementById("whatsapp").value;
+        var header = document.querySelector("#headerOptions button.selected").value;
+        var footer = document.querySelector("#footerOptions button.selected").value;
+        var bodyCards = document.querySelector("#bodyCardsOptions button.selected").value;
+        var pagProd = document.querySelector("#pagProdOptions button.selected").value;
+        var divisaoCat = document.querySelector("#divisaoCatOptions button.selected").value;
+        console.log("eae", nomeConsultor)
 
         var formData = {
-          nomeCliente: nomeCliente,
           nomeConsultor: nomeConsultor,
+          nomeEmpresa: nomeEmpresa,
+          nomeRepresentante: nomeRepresentante,
+          email: email,
+          whatsapp: whatsapp,
           header: header,
           footer: footer,
           bodyCards: bodyCards,
@@ -243,11 +607,13 @@
           });
 
         var popupSucesso = document.getElementById("popupSucesso");
-        popupSucesso.style.display = "block";
+       
+        popupSucesso.style.opacity = "1";
 
         setTimeout(function () {
-          popupSucesso.style.display = "none";
-        }, 3000);
+          
+          popupSucesso.style.opacity = "0";
+        }, 4000);
       });
     } else {
       console.error("Elemento botaoEnviar não encontrado.");
