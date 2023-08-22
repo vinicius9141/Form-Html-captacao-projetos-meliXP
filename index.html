@@ -459,18 +459,18 @@
 
         <h2>Header</h2>
         <label for="header">Selecione uma opção para o cabeçalho:</label>
-        <img id="header-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <img id="header-img" src="/img/placeholder.jpg" alt="">
         <div class="botoes-wrapper flex-r gap-10 gap-10" id="headerOptions">
-          <button class="optionButton flex-r" value="Ruby" data-group-id="header"
+          <button class="optionButton flex-r" value="soulcare" data-group-id="header"
             data-folder-name="HeaderImg">1</button>
-          <button class="optionButton flex-r" value="18k" data-group-id="header" data-folder-name="HeaderImg">2</button>
-          <button class="optionButton flex-r" value="RecParts" data-group-id="header"
+          <button class="optionButton flex-r" value="elite18k" data-group-id="header" data-folder-name="HeaderImg">2</button>
+          <button class="optionButton flex-r" value="maf" data-group-id="header"
             data-folder-name="HeaderImg">3</button>
-          <button class="optionButton flex-r" value="Marrocos" data-group-id="header"
+          <button class="optionButton flex-r" value="brasil" data-group-id="header"
             data-folder-name="HeaderImg">4</button>
-          <button class="optionButton flex-r" value="Soulcare" data-group-id="header"
+          <button class="optionButton flex-r" value="toner" data-group-id="header"
             data-folder-name="HeaderImg">5</button>
-          <button class="optionButton flex-r" value="Virtude" data-group-id="header"
+          <button class="optionButton flex-r" value="virtude" data-group-id="header"
             data-folder-name="HeaderImg">6</button>
         </div>
       </div>
@@ -478,20 +478,26 @@
       <div class="opcao flex-c gap-10">
         <h2>Footer</h2>
         <label for="footer">Selecione uma opção para o rodapé:</label>
-        <img id="footer-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <img id="footer-img" src="/img/placeholder.jpg" alt="">
         <div class="botoes-wrapper flex-r gap-10" id="footerOptions">
-          <button class="optionButton flex-r" value="marcos" data-group-id="footer"
-            data-folder-name="FooterImg">1</button>
-          <button class="optionButton flex-r" value="18k 2 card" data-folder-name="FooterImg">2</button>
-          <button class="optionButton flex-r" value="Fênix" data-folder-name="FooterImg">3</button>
-          <button class="optionButton flex-r" value="Soulcare" data-folder-name="FooterImg">4</button>
+          <button class="optionButton flex-r" value="soulcare" data-group-id="footer"
+          data-folder-name="FooterImg">1</button>
+        <button class="optionButton flex-r" value="elite18k" data-group-id="footer" data-folder-name="FooterImg">2</button>
+        <button class="optionButton flex-r" value="maf" data-group-id="footer"
+          data-folder-name="FooterImg">3</button>
+        <button class="optionButton flex-r" value="brasil" data-group-id="footer"
+          data-folder-name="FooterImg">4</button>
+        <button class="optionButton flex-r" value="toner" data-group-id="footer"
+          data-folder-name="FooterImg">5</button>
+        <button class="optionButton flex-r" value="virtude" data-group-id="footer"
+          data-folder-name="FooterImg">6</button>
         </div>
       </div>
 
       <div class="opcao flex-c gap-10">
         <h2>Body / Cards</h2>
         <label for="bodyCards">Selecione uma opção para o corpo / cards:</label>
-        <img id="bodyCards-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <img id="bodyCards-img" src="/img/placeholder.jpg" alt="">
         <div class="botoes-wrapper flex-r gap-10" id="bodyCardsOptions">
           <button class="optionButton flex-r" value="18k" data-group-id="bodyCards"
             data-folder-name="BodyCardsImg">1</button>
@@ -509,7 +515,7 @@
       <div class="opcao flex-c gap-10">
         <h2>Página de Produtos</h2>
         <label for="pagProd">Selecione uma opção para a página de produtos:</label>
-        <img id="pagProd-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <img id="pagProd-img" src="/img/placeholder.jpg" alt="">
         <div class="botoes-wrapper flex-r gap-10" id="pagProdOptions">
           <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd" value="18k">1</button>
           <button class="optionButton flex-r" data-group-id="pagProd" data-folder-name="pagProd"
@@ -525,7 +531,7 @@
       <div class="opcao flex-c gap-10">
         <h2>Divisão de Categorias</h2>
         <label for="divisaoCat">Selecione uma opção para a divisão de categorias:</label>
-        <img id="divisaoCat-img" src="https://i.postimg.cc/4N2nGZD8/soulcare.png" alt="">
+        <img id="divisaoCat-img" src="/img/placeholder.jpg" alt="">
         <div class="botoes-wrapper flex-r gap-10" id="divisaoCatOptions">
           <button class="optionButton flex-r" data-group-id="divisaoCat" data-folder-name="divisaoCat"
             value="18k">1</button>
@@ -640,7 +646,7 @@
     });
 
     function updateImage(element, option, folderName) {
-      const imageSrc = `./img/${folderName}/${option}.png`;
+      const imageSrc = `./img/${folderName}/${option}.jpg`;
       element.src = imageSrc;
     }
 
